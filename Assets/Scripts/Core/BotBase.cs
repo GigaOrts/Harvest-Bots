@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(ResourceScanner))]
+[RequireComponent(typeof(ResourceStorage))]
 [RequireComponent(typeof(BotFabric))]
 public class BotBase : MonoBehaviour
 {

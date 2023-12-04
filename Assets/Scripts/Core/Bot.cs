@@ -21,7 +21,6 @@ public class Bot : MonoBehaviour
 
     public void Run()
     {
-        Debug.Log(GetHashCode());
         StartCoroutine(RunAsync());
     }
 

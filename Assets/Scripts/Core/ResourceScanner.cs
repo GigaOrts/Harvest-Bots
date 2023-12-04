@@ -6,12 +6,11 @@ public class ResourceScanner : MonoBehaviour
     [SerializeField] private float _scanRadius = 100f;
     [SerializeField] private float _scanDelay = 1f;
 
-    public float ScanDelay => _scanDelay;
-    public float AfterScanPause => 0.001f;
-
+    private readonly Queue<Resource> _resourcesQueue = new Queue<Resource>();
     private const string LayerResource = "Resource";
 
-    private readonly Queue<Resource> _resourcesQueue = new Queue<Resource>();
+    public float ScanDelay => _scanDelay;
+    public float AfterScanPause => 0.001f;
 
     public Queue<Resource> Scan()
     {
