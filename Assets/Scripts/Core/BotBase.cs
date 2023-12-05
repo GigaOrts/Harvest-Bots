@@ -9,7 +9,7 @@ using UnityEngine;
 public class BotBase : MonoBehaviour
 {
     [SerializeField] private int _botsCountAtStart;
-    
+
     private readonly List<Bot> _bots = new List<Bot>();
 
     private ResourceScanner _resourceScanner;
@@ -45,10 +45,10 @@ public class BotBase : MonoBehaviour
     {
         var waitScanDelay = new WaitForSeconds(_resourceScanner.ScanDelay);
         var waitAfterScanDelay = new WaitForSeconds(_resourceScanner.AfterScanPause);
-        
+
         Queue<Resource> freeResources;
         Queue<Bot> freeBots;
-        
+
         while (enabled)
         {
             freeResources = _resourceScanner.Scan();
@@ -63,7 +63,7 @@ public class BotBase : MonoBehaviour
     private Queue<Bot> FindFreeBots()
     {
         IEnumerable<Bot> enumerable = _bots.Where(bot => bot.IsBusy == false);
-        
+
         return new Queue<Bot>(enumerable);
     }
 
@@ -71,7 +71,12 @@ public class BotBase : MonoBehaviour
     {
         while (freeResources.TryPeek(out Resource resource) && freeBots.TryPeek(out Bot bot))
         {
-            freeResources.Dequeue();
+            if (resource.IsOrdered)
+            {
+                freeResources.Dequeue();
+                continue;
+            }
+
             freeBots.Dequeue();
 
             resource.SetOrderedStatus();
