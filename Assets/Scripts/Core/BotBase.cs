@@ -53,7 +53,7 @@ public class BotBase : MonoBehaviour
         {
             freeResources = _resourceScanner.Scan();
             freeBots = FindFreeBots();
-            yield return waitAfterScanDelay;
+            //yield return waitAfterScanDelay;
 
             SendBots(freeResources, freeBots);
             yield return waitScanDelay;

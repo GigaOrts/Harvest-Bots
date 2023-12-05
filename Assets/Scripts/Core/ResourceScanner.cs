@@ -10,7 +10,6 @@ public class ResourceScanner : MonoBehaviour
     private const string LayerResource = "Resource";
 
     public float ScanDelay => _scanDelay;
-    public float AfterScanPause => 0.001f;
 
     public Queue<Resource> Scan()
     {
