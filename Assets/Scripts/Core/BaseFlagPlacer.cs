@@ -28,6 +28,8 @@ public class BaseFlagPlacer : MonoBehaviour
                     {
                         ReplaceFlag(hitInfo);
                     }
+
+                    _currentflagHandler = null;
                 }
                 else if (hitInfo.collider.TryGetComponent(out BaseFlagHandler flagHandler))
                 {

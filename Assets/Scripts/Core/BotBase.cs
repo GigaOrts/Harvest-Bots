@@ -32,6 +32,11 @@ public class BotBase : MonoBehaviour
 
     private void Update()
     {
+        BuyBot();
+    }
+
+    private void BuyBot()
+    {
         if (_resourceStorage.ResourcesCount >= _botPrice && _bots.Count < _maxBotsCount)
         {
             CreateBot();
