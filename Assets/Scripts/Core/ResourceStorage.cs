@@ -7,9 +7,9 @@ public class ResourceStorage : MonoBehaviour
 
     public int ResourcesCount { get; private set; }
 
-    public void UpdateResourcesCount()
+    public void UpdateResourcesCount(int amount)
     {
-        ResourcesCount++;
+        ResourcesCount += amount;
         _resourcesCountTMP.text = ResourcesCount.ToString();
     }
 }

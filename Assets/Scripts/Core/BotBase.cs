@@ -8,9 +8,9 @@ using UnityEngine;
 [RequireComponent(typeof(BotFabric))]
 public class BotBase : MonoBehaviour
 {
-    [SerializeField] private int _botsCountAtStart;
-
     private readonly List<Bot> _bots = new List<Bot>();
+    private int _maxBotsCount = 5;
+    private int _botPrice = 3;
 
     private ResourceScanner _resourceScanner;
     private ResourceStorage _resourceStorage;
@@ -25,12 +25,18 @@ public class BotBase : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < _botsCountAtStart; i++)
-        {
-            CreateBot();
-        }
+        CreateBot();
 
         StartCoroutine(RunAsync());
+    }
+
+    private void Update()
+    {
+        if (_resourceStorage.ResourcesCount >= _botPrice && _bots.Count < _maxBotsCount)
+        {
+            CreateBot();
+            _resourceStorage.UpdateResourcesCount(-_botPrice);
+        }
     }
 
     private void CreateBot()

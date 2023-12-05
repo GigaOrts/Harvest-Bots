@@ -37,7 +37,7 @@ public class Bot : MonoBehaviour
 
     private void Drop()
     {
-        _storage.UpdateResourcesCount();
+        _storage.UpdateResourcesCount(1);
 
         Destroy(_targetResource.gameObject);
     }
