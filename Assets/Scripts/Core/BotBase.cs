@@ -44,7 +44,6 @@ public class BotBase : MonoBehaviour
     private IEnumerator RunAsync()
     {
         var waitScanDelay = new WaitForSeconds(_resourceScanner.ScanDelay);
-        var waitAfterScanDelay = new WaitForSeconds(_resourceScanner.AfterScanPause);
 
         Queue<Resource> freeResources;
         Queue<Bot> freeBots;
@@ -53,7 +52,6 @@ public class BotBase : MonoBehaviour
         {
             freeResources = _resourceScanner.Scan();
             freeBots = FindFreeBots();
-            //yield return waitAfterScanDelay;
 
             SendBots(freeResources, freeBots);
             yield return waitScanDelay;
